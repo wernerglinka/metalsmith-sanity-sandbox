@@ -1,0 +1,33 @@
+{% extends "layout.njk" %}
+
+{% from "./blocks/block.njk" import renderBlock %}
+
+{% block body %}
+  {% for section in sections %}
+    
+    {# section || article || aside #}
+    <{{section.container}} 
+      class="{{ sectionClasses }}" 
+      {% if sectionId %} id="{{ sectionId }}" {% endif %} 
+      {% if sectionStyles %} style="{{ sectionStyles }}" {% endif %}
+    >
+      <div class="columns cols{{ section.columns | length }}">
+        {# render the section columns #}
+        {% for column in section.columns %}
+
+          {# render individual columns and their respective blocks #}
+          <div class="column">  
+            
+              {% set name = column.name %}
+              {% set params = column %}
+
+              {# name determines which block is rendered #}
+              {{ renderBlock(name, params, site) }}
+            
+          </div>
+        {% endfor %}
+      </div>   
+    </{{section.container}}>
+
+  {% endfor %}
+{% endblock %}
