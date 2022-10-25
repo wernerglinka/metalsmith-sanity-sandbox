@@ -88,12 +88,30 @@ function initMetalsmithSourceSanity(options) {
         let sectionContent = {};
         page.content.map( (section, i) => {
 
+          //console.log(JSON.stringify(section, null, 4));
+
           // common section fields
           sectionContent = {
             container: 'section',
             description: '',
             containerFields: {
-              disabled: section.disabled,
+              disabled: section.disabled || false,
+              containerId: section.containerId || '',
+              containerClass: section.containerClass || '',
+              inContainer: section.inContainer || false,
+              margin: {
+                top:  !!section.margin && section.margin.hasOwnProperty('top') ? section.margin.top  : false,
+                bottom: !!section.margin && section.margin.hasOwnProperty('bottom') ? section.margin.bottom : false,
+              },
+              padding: {
+                top: !!section.padding && section.padding.hasOwnProperty('top') ? section.padding.top : false,
+                bottom: !!section.padding && section.padding.hasOwnProperty('bottom') ? section.padding.bottom : false,
+              },
+              background: {
+                color: !!section.background && section.background.hasOwnProperty('color') ? section.background.color : '',
+                image: !!section.background && section.background.hasOwnProperty('image') ? section.background.image : '',
+                isDark: !!section.background && section.background.hasOwnProperty('isDark') ? section.background.isDark : false,
+              }
             },
             columns: [],
           }
