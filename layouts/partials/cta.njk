@@ -1,32 +1,25 @@
 {% macro cta(info) %}
-
-{% set cta = info %}
   <div class="cta">
-    
+    {% set classString = "" %}
+    {% if info.type === 'button' %}
+      {% set classString = classString ~ " button" %}
+    {% else %}
+      {% set classString = classString ~ " text-link" %}
+    {% endif %}
+    {% if info.buttonStyle and cta.isButton %}
+      {% set classString = classString ~ " " ~ cta.buttonStyle %}
+    {% endif %}
+    {% if info.isVideoTrigger %}
+      {% set classString = classString ~ " js-modal-video" %}
+    {% endif %}
 
-      {% set classString = "" %}
-      {% if cta.isButton %}
-        {% set classString = classString ~ " button" %}
-      {% else %}
-        {% set classString = classString ~ " text-link" %}
-      {% endif %}
-      {% if cta.buttonStyle and cta.isButton %}
-        {% set classString = classString ~ " " ~ cta.buttonStyle %}
-      {% endif %}
-      {% if cta.isVideoTrigger %}
-        {% set classString = classString ~ " js-modal-video" %}
-      {% endif %}
-
-
-      <a 
-        href="{{ cta.url }}" 
-        class="{{ classString }}" 
-        {% if cta.isExternal %}target="_blank" rel="noopener noreferrer"{% endif %}
-        {% if cta.isVideoTrigger %}data-video-id="{{ cta.videoId }}"{% endif %}
-      >
-        {{ cta.label}}
-      </a>
-
-    
+    <a 
+      href="{{ info.url }}" 
+      class="{{ classString }}" 
+      {% if info.isExternal %}target="_blank" rel="noopener noreferrer"{% endif %}
+      {% if info.isVideoTrigger %}data-video-id="{{ cta.videoId }}"{% endif %}
+    >
+      {{ info.label}}
+    </a>
   </div>
 {% endmacro %}

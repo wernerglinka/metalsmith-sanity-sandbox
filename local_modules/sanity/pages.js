@@ -131,7 +131,7 @@ function initMetalsmithSourceSanity(options) {
           pageContent.sections.push(sectionContent);
         }); 
         
-        console.log(JSON.stringify(pageContent.sections, null, 4));
+        //console.log(JSON.stringify(pageContent.sections, null, 4));
 
         // add page to metalsmith object
         files[fileName] = pageContent; 

@@ -14,6 +14,7 @@ import author from './documents/author';
 import cta from './objects/cta'
 import link from './objects/link';
 import simpleBlockContent from './objects/simpleBlockContent';
+import metadata from './objects/metadata';
 
 
 import textBlock from './sectionBlocks/textBlock';
@@ -23,6 +24,7 @@ import imageBlock from './sectionBlocks/imageBlock';
 import * as pageSections from './pageSections'
 import pageSectionDefaultFields from './pageSections/_pageSectionsDefaultFields'
 const allPageSections = Object.values(pageSections).map((section) => {
+  // add the default fields to each section
   return { ...section, fields: pageSectionDefaultFields.concat(section.fields) }
 })
 
@@ -40,6 +42,7 @@ export default createSchema({
     link,
     cta,
     simpleBlockContent,
+    metadata,
     textBlock,
     imageBlock
   ])

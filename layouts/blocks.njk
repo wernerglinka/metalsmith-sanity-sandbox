@@ -4,20 +4,6 @@
 
 {% block body %}
   {% for section in sections %}
-
-    {{ section.containerFields | dump }}
-
-    {% if section.containerFields %}
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            {{ renderBlock(section) }}
-          </div>
-        </div>
-      </div>
-    {% else %}
-      {{ renderBlock(section) }}
-    {% endif %}
     {# build the sections class string #}
     {% set sectionClasses = "section-wrapper" %}
     {% if section.containerFields.containerClass %}

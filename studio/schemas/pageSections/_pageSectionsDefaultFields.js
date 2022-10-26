@@ -1,9 +1,16 @@
 export default [
   {
-    name: 'sectionName',
-    type: 'string',
-    title: 'Section Name',
-    description: 'This is used for internal reference only',
+    name: "sectionType",
+    title: "Section Type",
+    type: "string",
+    description: 'This is used to select the proper section styles',
+    options: {
+      list: [
+        { title: "Banner", value: "banner" },
+        { title: "Media", value: "media" },
+        { title: "Text", value: "text" },
+      ],
+    }
   },
   {
     title: 'Disabled',
@@ -69,7 +76,7 @@ export default [
   {
     title: 'Has Background',
     name: 'hasBackground',
-    type: 'boolean'   
+    type: 'boolean' 
   },
   {
     title: 'Background',
