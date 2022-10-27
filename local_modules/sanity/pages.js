@@ -7,9 +7,6 @@ const queries = require('./queries');
 const getSerializers = require('./get-serializers');
 
 // renderers
-const renderImageBlock = require('./block-renderers/render-image-block');
-const renderTextBlock = require('./block-renderers/render-text-block');
-
 const renderBlock = require('./block-renderers');
 
 /**
@@ -75,9 +72,9 @@ function initMetalsmithSourceSanity(options) {
           bodyClasses: '',
           seo: {
             title: page.title,
-            description: '',
-            socialImage: '',
-            canonicalOverwrite: '',
+            description: page.description,
+            socialImage: page.image,
+            canonicalOverwrite: page.canonicalUrl,
           },
           sections: [],
           contents: Buffer.from(''),
