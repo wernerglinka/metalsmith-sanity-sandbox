@@ -27,6 +27,11 @@ export default {
       description: 'Override title from the target article.',
     },
     {
+      type: 'string',
+      name: 'linkClass',
+      title: 'Link Class',
+    },
+    {
       type: 'array',
       name: 'children',
       title: 'Children',
