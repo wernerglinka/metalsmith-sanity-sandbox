@@ -3,11 +3,6 @@ export default {
   title: 'Text Block',
   type: 'object',
   fields: [
-    {
-      name: 'blockType',
-      title: 'Block Type',
-      type: 'string',
-    },
     { name: 'titlePrefix', 
       type: 'string', 
       title: 'Title Prefix' 

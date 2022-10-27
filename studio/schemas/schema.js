@@ -28,6 +28,7 @@ const allPageSections = Object.values(pageSections).map((section) => {
   return { ...section, fields: pageSectionDefaultFields.concat(section.fields) }
 })
 
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -46,5 +47,5 @@ export default createSchema({
     textBlock,
     imageBlock
   ])
-  .concat(allPageSections),
+  .concat(allPageSections)
 })
