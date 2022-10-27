@@ -2,11 +2,42 @@ export default {
   name: 'post',
   title: 'Post',
   type: 'document',
+  fieldsets: [
+    { 
+      name: 'metadata', 
+      title: 'Page Meta Data',
+      options: {
+        collapsible: true,
+        collapsed: true
+      }
+    },
+  ],
   fields: [
     {
       name: 'title',
-      title: 'Title',
-      type: 'string'
+      type: 'string',
+      title: 'Page Title',
+      fieldset: 'metadata',
+    },
+    {
+      name: 'description',
+      type: 'text',
+      title: 'Page Description',
+      fieldset: 'metadata',
+    },
+    {
+      name: 'image',
+      type: 'image',
+      title: 'Page Image',
+      description: 'This image will be used when sharing the page on social media',
+      fieldset: 'metadata',
+    },
+    {
+      name: 'canonicalUrl',
+      type: 'url',
+      title: 'Canonical URL',
+      description: 'The canonical URL of the page',
+      fieldset: 'metadata',
     },
     {
       name: 'slug',
@@ -36,15 +67,21 @@ export default {
       ]
     },
     {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}]
-    },
-    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime'
+    },
+    {
+      name: 'categories',
+      type: 'string',
+      title: 'Post Categories',
+      options: {
+        list: [
+          { title: "Apple", value: "apple" },
+          { title: "Orange", value: "orange" },
+          { title: "Cherry", value: "cherry" },
+        ],
+      },
     },
     {
       name: 'body',
