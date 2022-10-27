@@ -1,17 +1,23 @@
 export default {
   name: 'navigation',
-  title: 'Navigation',
   type: 'document',
+  title: 'Navigation',
   fields: [
-      {
-          name: "title",
-          type: "string",
-          title: "Title"
-        },
-        {
-          name: 'navId',
-          type: 'slug',
-          title: "Navigation Id"
-        }         
-  ]
-}
+    {
+      type: 'string',
+      name: 'name',
+      title: 'Name',
+    },
+    {
+      type: 'string',
+      name: 'title',
+      title: 'Title',
+    },
+    {
+      type: 'array',
+      name: 'sections',
+      title: 'Sections',
+      of: [{ type: 'navigation.section' }],
+    },
+  ],
+};
