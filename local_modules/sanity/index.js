@@ -5,6 +5,8 @@ const imageUrl = require('@sanity/image-url');
 const queries = require('./queries');
 const getSerializers = require('./get-serializers');
 
+const merge = require('deepmerge');
+
 const getPosts = require('./get-posts');
 const getPages = require('./get-pages');
 const getNavigation = require('./get-nav');
@@ -66,18 +68,10 @@ function initMetalsmithSourceSanity(options) {
     const pendingNav = getNavigation(client, files);
     const siteNav = await pendingNav;
     // merge site navigation into metadata object
-    
-    console.log(JSON.stringify(siteNav, null, 4));
-    
-    /*
     const metadata = metalsmith.metadata();
-    metadata['newNav'] = siteNav;
+    Object.assign(metadata, merge(metadata, siteNav))
 
-    // update metadata
-    metalsmith.metadata(metadata);
-
-    console.log(metalsmith);
-    */
+    
     done();
   }
 }
