@@ -87,7 +87,7 @@ function initMetalsmithSourceSanity(options) {
         }
       });
 
-      console.log(JSON.stringify(nav, null, 4));
+      //console.log(JSON.stringify(nav, null, 4));
 
       done()
     }).catch(err => console.error(err));

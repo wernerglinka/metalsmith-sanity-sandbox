@@ -5,6 +5,9 @@ const imageUrl = require('@sanity/image-url');
 const queries = require('./queries');
 const getSerializers = require('./get-serializers');
 
+const getPosts = require('./get-posts');
+const getPages = require('./get-pages');
+
 /**
  * @typedef Options
  * @property {String} key
@@ -35,57 +38,47 @@ function normalizeOptions(options) {
  * @returns {import('metalsmith').Plugin}
  */
 function initMetalsmithSourceSanity(options) {
-  options = normalizeOptions(options)
+  options = normalizeOptions(options);
 
-  return function metalsmithSourceSanity(files, metalsmith, done) {
-    const debug = metalsmith.debug('metalsmith-source-sanity')
-    debug('Running with options: %O', options)
+  return async function metalsmithSourceSanity(files, metalsmith, done) {
+    const debug = metalsmith.debug('metalsmith-source-sanity');
+    debug('Running with options: %O', options);
 
     // initialize Sanity client
     const client = sanityClient(options);
+    
+    // get all posts from Sanity
+    const pendingPosts = getPosts(client, files);
+    const allPosts = await pendingPosts;
+    // merge posts into files object
+    Object.assign(files, allPosts);
+    debug('Sanity posts: %O', allPosts);
 
-    // custom serializers for sanity blocks
-    // read more: https://www.sanity.io/docs/presenting-block-text
-    const serializers = getSerializers(client);
+    // get all pages from Sanity
+    const pendingPages = getPages(client, files);
+    const allPages = await pendingPages;
+    // merge pages into files object
+    Object.assign(files, allPages);
+    debug('Sanity pages: %O', allPages);
 
-    // fetch all blogposts from Sanity
-    // get rawPosts in Portable Text format
-    client.fetch(queries.posts).then(allRawPosts => {
-      // turn rawPosts into markdown
-      // read more: https://github.com/sanity-io/block-content-to-markdown
-      allRawPosts.map(post => {
-        // key for the files array
-        const slug = BlocksToMarkdown(post.slug, { serializers, ...client});
-        const fileName = `blog/${slug}.md`;
-        // value for the files array
-        const page = {
-          layout: 'blog-post.njk',
-          bodyClass: 'blog-post',
-          seo: {
-            title: post.title,
-            description: 'Etiam porta sem malesuada magna mollis euismod.',
-            socialImage: 'https://res.cloudinary.com/glinkaco/image/upload/v1646849499/tgc2022/social_yitz6j.png',
-            canonicalOverwrite: ''
-          },
-          blogTitle: post.title,
-          date: post.publishedAt,
-          author: post.authorName,
-          image: imageUrl(client).image(post.mainImage).url(),
-          featuredBlogpost: true,
-          featuredBlogpostOrder: 1,
-          excerpt: '',
-          contents: Buffer.from(BlocksToMarkdown(post.body, { serializers, ...client})),
-          mode: '0644',
-          stats: {}
-        }
+    console.log(metalsmith);
 
-        // add page to metalsmith object
-        files[fileName] = page; 
-      });
+    /*
+    // get the site navigation from Sanity
+    const pendingNav = getNavigation(client, files);
+    const siteNav = await pendingNav;
+    // merge site navigation into files object
+    Object.assign(files, siteNav);
+    debug('Sanity site navigation: %O', siteNav);
+    */
 
-      done()
+    const metadata = metalsmith.metadata();
+    metadata['newNav'] = siteNav;
 
-    }).catch(err => console.error(err));
+    // update metadata
+    metalsmith.metadata(metadata);
+
+    done();
   }
 }
 
