@@ -7,6 +7,7 @@ const getSerializers = require('./get-serializers');
 
 const getPosts = require('./get-posts');
 const getPages = require('./get-pages');
+const getNavigation = require('./get-nav');
 
 /**
  * @typedef Options
@@ -61,23 +62,22 @@ function initMetalsmithSourceSanity(options) {
     Object.assign(files, allPages);
     debug('Sanity pages: %O', allPages);
 
-    console.log(metalsmith);
-
-    /*
     // get the site navigation from Sanity
     const pendingNav = getNavigation(client, files);
     const siteNav = await pendingNav;
-    // merge site navigation into files object
-    Object.assign(files, siteNav);
-    debug('Sanity site navigation: %O', siteNav);
-    */
-
+    // merge site navigation into metadata object
+    
+    console.log(JSON.stringify(siteNav, null, 4));
+    
+    /*
     const metadata = metalsmith.metadata();
     metadata['newNav'] = siteNav;
 
     // update metadata
     metalsmith.metadata(metadata);
 
+    console.log(metalsmith);
+    */
     done();
   }
 }

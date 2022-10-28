@@ -15,8 +15,7 @@ const assets = require("metalsmith-static-files");
 const metadata = require("@metalsmith/metadata");
 const prism = require("metalsmith-prism");
 
-const getPosts = require("./local_modules/sanity");
-const getNavigation = require("./local_modules/sanity/navigation");
+const getSanity = require("./local_modules/sanity");
 
 const marked = require("marked");
 
@@ -65,18 +64,7 @@ Metalsmith(__dirname)
   })
 
   .use(
-    getPosts({
-      // Config object for the @sanity/client package
-      // See https://www.npmjs.com/package/@sanity/client
-      projectId: 'f99118fv', // required, else will throw
-      dataset: 'production', // defaults to 'production'
-      apiVersion: 'v2022-10-19', // use a UTC date string
-      token:'skWyI3OZYtXX11BITtnlIDYrc7lEPO9KdxmtmqaPP7zEQO9kD41biODXI51rM936YDkNJvNPv1bS5qN8M2TK2YzFZvx9GPCQvFKR07Ms4VaqUErVzpDIGTJRwKrHRGXBgFRtgYn6ynkWocUgu2EVhEyYsOjCChfXivTejZi1wuAxw2akYsnZ'
-    })
-  )
-
-  .use(
-    getNavigation({
+    getSanity({
       // Config object for the @sanity/client package
       // See https://www.npmjs.com/package/@sanity/client
       projectId: 'f99118fv', // required, else will throw
