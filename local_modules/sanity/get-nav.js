@@ -28,20 +28,23 @@ async function getNav(client) {
         title: section.title,
         url: section.target.slug.current,
         class: section.linkClass,
+        icon: section.icon?.name
       });
     } else {
       navigation.menu.push({
         title: section.title,
         url: '',
         class: section.linkClass,
+        icon: section.icon?.name,
         submenu: []
       });
-      // loop oveer the links in the submenu
+      // loop over the links in the submenu
       section.links.map(link => {
         navigation.menu[navigation.menu.length-1].submenu.push({
           title: link.title,
           url: link.target.slug.current,
           class: link.linkClass,
+          icon: link.icon?.name,
         });
       });
     }

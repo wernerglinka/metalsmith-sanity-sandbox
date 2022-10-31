@@ -69,7 +69,9 @@ function initMetalsmithSourceSanity(options) {
     const siteNav = await pendingNav;
     // merge site navigation into metadata object
     const metadata = metalsmith.metadata();
-    Object.assign(metadata, merge(metadata, siteNav))
+    Object.assign(metadata, merge(metadata, siteNav));
+
+    console.log(JSON.stringify(siteNav, null, 4));
 
     
     done();

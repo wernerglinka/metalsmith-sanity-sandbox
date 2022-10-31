@@ -21,6 +21,14 @@ export default {
       // _weak: true // enable if you don't want reference integrity checks  
     },
     {
+      title: "Icon",
+      name: "icon",
+      type: "iconPicker",
+      options: {
+          providers: ["fi"]
+      }
+    },
+    {
       type: 'string',
       name: 'title',
       title: 'Title',
