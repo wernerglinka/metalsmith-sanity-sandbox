@@ -28,6 +28,8 @@ async function getPages(client, files) {
     const slug = BlocksToMarkdown(page.slug, { serializers, ...client});
     const fileName = `${slug}.md`;
 
+    //console.log(JSON.stringify(page, null, 4));
+
     // build the json representation of the page, starting with layout. The page 
     // content is composed with sections, which are composed of blocks.
     pageContent = {
@@ -60,17 +62,17 @@ async function getPages(client, files) {
           containerClass: section.containerClass || '',
           inContainer: section.inContainer || false,
           margin: {
-            top:  !!section.margin && section.margin.hasOwnProperty('top') ? section.margin.top  : false,
-            bottom: !!section.margin && section.margin.hasOwnProperty('bottom') ? section.margin.bottom : false,
+            top:  !!section.margin?.top ? section.margin.top  : false,
+            bottom: !!section.margin?.bottom ? section.margin.bottom : false,
           },
           padding: {
-            top: !!section.padding && section.padding.hasOwnProperty('top') ? section.padding.top : false,
-            bottom: !!section.padding && section.padding.hasOwnProperty('bottom') ? section.padding.bottom : false,
+            top:  !!section.padding?.top ? section.padding.top  : false,
+            bottom: !!section.padding?.bottom ? section.padding.bottom : false,
           },
           background: {
-            color: !!section.background && section.background.hasOwnProperty('color') ? section.background.color : '',
-            image: !!section.background && section.background.hasOwnProperty('image') ? section.background.image : '',
-            isDark: !!section.background && section.background.hasOwnProperty('isDark') ? section.background.isDark : false,
+            color: !!section.background?.color ? section.background.color : '',
+            image: !!section.background?.image ? section.background.image : '',
+            isDark: !!section.background?.isDark ? section.background.isDark : false,
           }
         },
         columns: [],

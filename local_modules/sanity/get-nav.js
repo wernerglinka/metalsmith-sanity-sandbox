@@ -1,8 +1,12 @@
-const BlocksToMarkdown = require('@sanity/block-content-to-markdown');
-const imageUrl = require('@sanity/image-url');
 const queries = require('./queries');
-const getSerializers = require('./get-serializers');
 
+/**
+ * getNav
+ * fetches the navigation object from Sanity and returns a navigation metadata object for metalsmith
+ * 
+ * @param {object} client   the sanity client object
+ * @returns navigation json
+ */
 async function getNav(client) {
 
   const navigation= {

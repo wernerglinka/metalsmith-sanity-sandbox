@@ -1,8 +1,16 @@
 export default {
   name: 'navigationItem',
-  title: 'Navigation Item',
   type: 'object',
+  title: 'Navigation Item',
   fields: [
+    {
+      title: "Link Icon",
+      name: "linkIcon",
+      type: "iconPicker",
+      options: {
+          providers: ["fi"]
+      }
+    },
     {
       name: "text",
       type: "string",

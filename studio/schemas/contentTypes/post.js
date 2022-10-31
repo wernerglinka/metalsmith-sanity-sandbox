@@ -1,7 +1,10 @@
+import {FiFileText} from "react-icons/fi";
+
 export default {
   name: 'post',
   title: 'Post',
   type: 'document',
+  icon: FiFileText,
   fieldsets: [
     { 
       name: 'metadata', 

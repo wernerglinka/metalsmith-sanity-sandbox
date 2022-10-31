@@ -1,7 +1,10 @@
+import {FiMenu} from "react-icons/fi";
+
 export default {
   name: 'navigation',
   type: 'document',
   title: 'Navigation',
+  icon: FiMenu,
   fields: [
     {
       type: 'string',

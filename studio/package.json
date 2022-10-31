@@ -24,6 +24,8 @@
     "prop-types": "^15.6",
     "react": "^16.2",
     "react-dom": "^16.2",
+    "react-icons": "^4.6.0",
+    "sanity-plugin-icon-picker": "^2.0.2",
     "styled-components": "^5.3.6"
   }
 }

@@ -5,7 +5,7 @@ const groq = require('groq');
 // for navigation query read: https://www.sanity.io/schemas/nested-navigation-structure-757f39ee
 const queries = {
   posts: groq`*[_type == 'post']{ _id, publishedAt, title, slug, mainImage, 'authorName': author->name, body[] }`,
-  pages: groq`*[_type == 'page']{ _id, title, slug, content[] }`,
+  pages: groq`*[_type == 'page']{ _id, title, icon, slug, content[] }`,
   nav: groq`*[_type == 'navigation'][0] { ..., sections[]{ ..., target->{title, slug, _id}, links[]{ ..., target->{title, slug, _id}, children[]{ ..., target->{title, slug, _id}}}}} `,
 }
 

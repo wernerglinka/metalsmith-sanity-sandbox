@@ -1,6 +1,9 @@
+import {FiFile} from "react-icons/fi";
+
 export default {
   name: 'page',
   title: 'Page',
+  icon: FiFile,
   type: 'document',
   fieldsets: [
     { 
@@ -58,4 +61,15 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare(selection) {
+      const { title } = selection;
+      return {
+        title: title,
+      };
+    },
+  }
 }
