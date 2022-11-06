@@ -7,6 +7,7 @@ const getSerializers = require('./get-serializers');
 
 const merge = require('deepmerge');
 
+const getHomePage = require('./get-home');
 const getPosts = require('./get-posts');
 const getPages = require('./get-pages');
 const getNavigation = require('./get-nav');
@@ -49,6 +50,13 @@ function initMetalsmithSourceSanity(options) {
 
     // initialize Sanity client
     const client = sanityClient(options);
+
+    // get home page from Sanity
+    const pendingHomePage = getHomePage(client, files);
+    const homePage = await pendingHomePage;
+    // merge home page into files object
+    Object.assign(files, homePage);
+    debug('Sanity pages: %O', homePage);
     
     // get all posts from Sanity
     const pendingPosts = getPosts(client, files);
