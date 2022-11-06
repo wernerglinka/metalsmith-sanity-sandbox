@@ -71,7 +71,7 @@ function initMetalsmithSourceSanity(options) {
     const metadata = metalsmith.metadata();
     Object.assign(metadata, merge(metadata, siteNav));
 
-    console.log(JSON.stringify(siteNav, null, 4));
+    //console.log(JSON.stringify(siteNav, null, 4));
 
     
     done();

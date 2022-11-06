@@ -24,7 +24,14 @@
     align-items: center;
 
     .column {
+      flex: 0 0 100%;
+    }
+
+    &.cols2 .column {
       flex: 0 0 50%;
+    }
+    &.cols3 .column {
+      flex: 0 0 33.333333%;
     }
   }
 }

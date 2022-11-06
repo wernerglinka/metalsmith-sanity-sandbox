@@ -1,13 +1,9 @@
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif;
 }
 .container {
   max-width: 1024px;
