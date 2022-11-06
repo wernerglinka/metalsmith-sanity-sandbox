@@ -19,7 +19,7 @@
           {% if (loop.index === 1) and (loop.index === length) %}class="first"{% endif %} 
           {% if (loop.index === 1) and (loop.index !== length) %}class="first"{% endif %}
           {% if (loop.index !== 1) and (loop.index === length) %}class="last"{% endif %}
-        >{{ author }}</li>
+        ><a href="{{ author.slug }}">{{ author.name }}</a></li>
       {% endfor %}
     {% endif %}
     </ul>

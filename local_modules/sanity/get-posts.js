@@ -27,10 +27,13 @@ async function getPosts(client) {
     // key for the files array
     const slug = BlocksToMarkdown(page.slug, { serializers, ...client});
     const fileName = `${slug}.md`;
-
-    // get the blog post authors
+    
+		// get the blog post authors
     const authors = page.authorsList.map( author => {
-      return author.name;
+      return {
+				name: author.name,
+				slug: author.slug.current,
+			}
     });
 
     // build the json representation of the page, starting with layout. The page 
@@ -44,7 +47,6 @@ async function getPosts(client) {
         socialImage: page.image,
         canonicalOverwrite: page.canonicalUrl,
       },
-      authors: authors,
       sections: [],
       contents: Buffer.from(''),
       mode: '0644',
