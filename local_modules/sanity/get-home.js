@@ -16,18 +16,6 @@ async function getHomePage(client, files) {
   const rawHomePage = client.fetch(queries.home);
   let homePage = await rawHomePage;
 
-  console.log(homePage);
-    
-  // turn rawHomePage into markdown
-  // read more: https://github.com/sanity-io/block-content-to-markdown
- 
-
-  // key for the files array
-  const slug = "index";
-  const fileName = `${slug}.md`;
-
-  //console.log(JSON.stringify(page, null, 4));
-
   // build the json representation of the page, starting with layout. The page 
   // content is composed with sections, which are composed of blocks.
   pageContent = {
@@ -46,7 +34,7 @@ async function getHomePage(client, files) {
   };
 
   let sectionContent = {};
-  homePage.content.map( (section, i) => {
+  homePage[0].content.map( (section, i) => {
 
     //console.log(JSON.stringify(section, null, 4));
 
@@ -80,6 +68,7 @@ async function getHomePage(client, files) {
     section.sectionBlocks.map( block => {
       // get the blocktype and create the block object
       const type = block._type;
+
       // call the render function by type reference
       const blockObject = renderBlock[type](block, client);
 
@@ -90,10 +79,8 @@ async function getHomePage(client, files) {
     // add the sections data into the sections array
     pageContent.sections.push(sectionContent);
   }); 
-  
-  //console.log(JSON.stringify(pageContent.sections, null, 4));
 
-  return pageContent;
+  return { 'index1.md': pageContent };
 }
 
 module.exports = getHomePage;

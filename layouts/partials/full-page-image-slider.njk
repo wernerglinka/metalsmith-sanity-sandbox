@@ -1,13 +1,13 @@
-{#
-  image-slider uses swiper.js to create a slider with images
-  source: https://swiperjs.com/get-started
-#}
-
 {% from "../partials/image.njk" import image %}
 {% from "../partials/text.njk" import text %}
 {% from "../partials/scroll-to.njk" import scrollTo %}
 
 {% macro imageSlider(info, metadata) %}
+
+  {% set images = info.images %}
+  {% set imageCount = images | length %}
+  {% set imageWidth = 100 / imageCount %}
+  {% set imageHeight = 100 / imageCount %}
   
   <div class="slides-container">
     <ul class="slides">
