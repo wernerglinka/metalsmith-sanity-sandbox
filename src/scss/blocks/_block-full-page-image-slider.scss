@@ -1,3 +1,5 @@
+@use "../variables" as *;
+
 .slides-container {
   width: 100vw;
   height: 100vh;
@@ -24,7 +26,14 @@
       cursor: pointer;
       transition: all 0.3s ease-in-out;
 
-      &:hover,
+      &:hover {
+        // make li extend to the left
+        width: 70px;
+
+        span {
+          background-color: var(--color-link-hover);
+        }
+      }
       &.active {
         // make li extend to the left
         width: 70px;
@@ -33,6 +42,7 @@
           background-color: var(--color-highlight);
         }
       }
+
       
       span {
         display: block;
@@ -118,7 +128,7 @@
       position: absolute;
       top: 30%;
       left: 0;
-      width: 60%;
+      width: 60vw;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -129,19 +139,47 @@
       opacity: 0;
       transform: translateY(-30px);
       transition: all 2s ease-in-out;
+
+      @media (max-width: $mid-sized-screen) {
+        padding: 10vw;
+      }
+      @media (max-width: $ipad-pro-width-portrait) {
+        width: 75vw;
+        padding: 6vw;
+      }
+      @media (max-width: $small-screen) {
+        padding: 40px 40px 60px;
+      }
   
       h1 {
-        font-size: 6em;
+        font-size: 5vw;
         font-weight: 700;
         color: #fff;
         margin:  0 0 0.5em;
+
+        @media (max-width: $mid-sized-screen) {
+          font-size: 6rem;
+        }
+        @media (max-width: $small-screen) {
+          font-size: 4rem;
+        }
       }
   
       p {
-        font-size: 1.5em;
+        font-size: 1.5vw;
         line-height: 1.5;
         color: #fff;
         margin: 0;
+        
+        @media (max-width: $mid-sized-screen) {
+          font-size: 1.8rem;
+        }
+        @media (max-width: $ipad-width-portrait) {
+          font-size: 1.8rem;
+        }
+        @media (max-width: $small-screen) {
+          font-size: 1.6rem;
+        }
       }
     }
 
