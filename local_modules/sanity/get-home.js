@@ -80,7 +80,7 @@ async function getHomePage(client, files) {
     pageContent.sections.push(sectionContent);
   }); 
 
-  return { 'index1.md': pageContent };
+  return { 'index.md': pageContent };
 }
 
 module.exports = getHomePage;

@@ -28,9 +28,11 @@
 
     <ul class="slides-nav">
       {% for slide in info.slides %}
-      <li 
-        class="js-slide-trigger {%  if loop.first %}active{% endif %}"" data-slide-id="#slide{{ loop.length - loop.index0}}"
-      ></li>
+      <li>
+        <a class="js-slide-trigger {%  if loop.first %}active{% endif %}"" data-slide-id="#slide{{ loop.length - loop.index0}}">
+          <span></span>
+        </a>
+      </li>
       {% endfor %}
     </ul> <!-- .slides-nav -->
  
