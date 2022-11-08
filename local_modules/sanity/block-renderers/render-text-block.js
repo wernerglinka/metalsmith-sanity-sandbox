@@ -10,6 +10,7 @@ module.exports = function renderTextBlock(block, client) {
     name: 'text',
     titlePrefix: block.titlePrefix ? block.titlePrefix : '',
     title: block.title ? block.title : '',
+    headerType: block.headerType ? block.headerType : '',
     subTitle: block.subTitle ? block.subTitle : '',
     body: block.Body ? BlocksToMarkdown(block.Body, { serializers, ...client}) : '',
     cta: {

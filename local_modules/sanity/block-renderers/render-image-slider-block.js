@@ -20,6 +20,7 @@ module.exports = function renderImageSliderBlock(block, client) {
       text: {
         titlePrefix: slide.slideText.titlePrefix || '',
         title: slide.slideText.title || '',
+        headerType: slide.slideText.headerType ? slide.slideText.headerType : '',
         subTitle: slide.slideText.subTitle || '',
         body: slide.slideText.Body ? BlocksToMarkdown(slide.slideText.Body, { serializers, ...client}) : '',
       },

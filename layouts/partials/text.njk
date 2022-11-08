@@ -7,9 +7,9 @@
   {% endif %}
 
   {% if info.title %}
-    {% if info.header === "h1" %}
+    {% if info.headerType === "h1" %}
       <h1>{{ info.title }}</h1>
-    {% elif info.header === "h2" %}
+    {% elif info.headerType === "h2" %}
       <h2>{{ info.title }}</h2>
     {% else %}
       <h3>{{ info.title }}</h3>
