@@ -1,3 +1,5 @@
+@use "../variables" as *;
+
 .header-wrapper {
   position: relative;
   z-index: 1000;
@@ -17,7 +19,7 @@
   }
 
   .container {
-    max-width: var(--max-content-width);
+    max-width: $max-content-width;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -48,11 +50,12 @@
 .brand {
   position: relative;
   z-index: 3000;
-  width: 200px;
-  height: 50px;
 
   a {
-    display: block;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 50px;
   }
 
   svg {

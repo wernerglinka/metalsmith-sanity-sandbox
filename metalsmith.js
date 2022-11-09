@@ -125,10 +125,13 @@ Metalsmith(__dirname)
 
   .use(
     esbuild({
+      bundle: true,
+      minify: false,
+      sourcemap: true,
+      drop: [],
       entries: {
         "assets/scripts": "src/js/main.js",
       },
-      drop: [],
     })
   )
 

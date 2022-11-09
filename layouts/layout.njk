@@ -2,21 +2,25 @@
 <html class="no-js" lang="">
 
   <head>
-    {% include "partials/head.njk" %}
+    {% include "sections/head.njk" %}
   </head>
 
   <body class="{{ bodyClass }}">
+    <div id="at-top"></div>
+    {% include "sections/header.njk" %}
     
-    {% include "partials/header.njk" %}
-    
-    <main>
-    {% block body %}
-    {# will be replaced by page content #}
-    {% endblock %}
-    </main>
+    <div data-barba="wrapper">
+      <main data-barba="container" data-barba-namespace="barbaPage">
+        
+        {% block body %}
+          This is the default contents
+        {% endblock %}
+        
+      </main>
+    </div>
 
-    {% include "partials/footer.njk" %}
-    {% include "partials/scripts.njk" %}
+    {% include "sections/footer.njk" %}
+    {% include "sections/scripts.njk" %}
   </body>
   
 </html>
