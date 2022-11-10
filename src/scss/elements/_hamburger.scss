@@ -4,7 +4,7 @@ $button-size: 30px;
 
 #hamburger {
   position: relative;
-  z-index: 1001;
+  z-index: 3;
   width: $button-size;
   height: $button-size;
   cursor: pointer;
