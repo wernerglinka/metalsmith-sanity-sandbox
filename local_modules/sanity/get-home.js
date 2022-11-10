@@ -40,8 +40,8 @@ async function getHomePage(client, files) {
 
     // common section fields
     sectionContent = {
-      container: 'section',
       description: '',
+      container: section.htmlTag || 'section',
       containerFields: {
         disabled: section.disabled || false,
         containerId: section.containerId || '',

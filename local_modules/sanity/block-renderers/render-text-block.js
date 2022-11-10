@@ -16,7 +16,8 @@ module.exports = function renderTextBlock(block, client) {
     cta: {
       label: block.cta.title ? block.cta.title : '',
       url: block.cta.link ? block.cta.link : '',
-      type: block.cta.kind ? block.cta.kind : '',
+      kind: block.cta.kind ? block.cta.kind : '',
+      type: block.cta.linkType ? block.cta.linkType : '',
     }
   };
 };

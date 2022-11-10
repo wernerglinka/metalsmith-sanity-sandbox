@@ -1,13 +1,14 @@
 {% macro cta(info) %}
+
   <div class="cta">
     {% set classString = "" %}
-    {% if info.type === 'button' %}
+    {% if info.kind === 'button' %}
       {% set classString = classString ~ " button" %}
     {% else %}
       {% set classString = classString ~ " text-link" %}
     {% endif %}
-    {% if info.buttonStyle and cta.isButton %}
-      {% set classString = classString ~ " " ~ cta.buttonStyle %}
+    {% if info.type %}
+      {% set classString = classString ~ " " ~ info.type %}
     {% endif %}
     {% if info.isVideoTrigger %}
       {% set classString = classString ~ " js-modal-video" %}

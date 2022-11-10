@@ -31,6 +31,8 @@
     {# get the sections id string #}
     {% if section.containerFields.containerId %}
       {% set sectionId = section.containerFields.containerId %}
+    {% else %}
+      {% set sectionId = "" %}
     {% endif %}
 
     {# build the section inline styles string #}
