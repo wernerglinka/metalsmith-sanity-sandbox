@@ -12,8 +12,17 @@
   --color-black: #000;
   --color-link: #932432;
   --color-link-hover: #de354c; 
+  --color-link-inactive: #ccc;
+
+  --color-header-background: rgba(255, 255, 255, 0.9);
+  --color-caption-background: rgba(0, 0, 0, 0.5);
+  --color-overlay-background: rgba(63, 63, 63, 0.95);
+  --default-box-shadow: 0px 4px 10px 0px rgba(51,51,51,0.2);
+  --default-text-shadow: 0px 0px 6px rgba(0, 0, 0, 1);
 }
 
+$large-screen-padding: 40px;
+$small-screen-padding: 20px;
 $max-content-width: 1440px;
 $mid-sized-screen: 1200px;
 $ipad-pro-width-portrait: 1024px;

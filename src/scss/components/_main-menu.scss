@@ -27,7 +27,7 @@
 
       svg {
         margin: 13px 15px 0 0;
-        stroke: #ccc;
+        stroke: var(--color-link-inactive);
         width: 24px;
         height: 24px;
       }
@@ -37,17 +37,18 @@
       text-decoration: none;
       display: block;
       font-size: 28px;
-      color: #ccc;
+      color: var(--color-white);
+      transition: color 0.5s ease-in-out;
       font-weight: 500;
 
       &:hover {
-        color: #fff;
+        color: var(--color-link-hover);
         border: none;
       }
     }
 
     p {
-      color: #ddd;
+      color: var(--color-link-inactive);
       margin-top: 0;
     }
   }
@@ -66,18 +67,10 @@
 }
 
 // active path
-[pageName="home"] #main-menu .home {
-  color: #666;
-  pointer-events: none;
-  cursor: default;
-}
-[pageName="other-page"] #main-menu .other-page {
-  color: #666;
-  pointer-events: none;
-  cursor: default;
-}
+[pageName="home"] #main-menu .home,
+[pageName="other-page"] #main-menu .other-page,
 [pageName="blog"] #main-menu .blog {
   color: #666;
   pointer-events: none;
   cursor: default;
-} 
+}

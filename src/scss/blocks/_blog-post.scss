@@ -19,6 +19,9 @@
     justify-content: center;
     align-items: center;
 
+    // construct the author and date string
+    // By author, author and author on date
+
     ul {
       list-style: none;
       display: flex;
@@ -44,6 +47,7 @@
         }
       }
     }
+    // and the on before the date
     time:before {
       content: "on";
       padding: 0 0.2rem;

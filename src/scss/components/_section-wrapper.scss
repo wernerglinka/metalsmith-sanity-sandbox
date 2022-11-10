@@ -1,14 +1,16 @@
+@use "../variables" as *;
+
 .section-wrapper {
   &.inContainer {
-    max-width: var(--max-content-width);
+    max-width: $max-content-width;
     margin: 0 auto;
 
-    @media (max-width: 1520px) {
+    @media (max-width: ($max-content-width + (2 * $large-screen-padding))) {
       max-width: 100%;
-      padding: 0 40px;
+      padding: 0 $large-screen-padding;
     }
-    @media (max-width: 500px) {
-      padding: 0 20px;
+    @media (max-width: $small-screen) {
+      padding: 0 $small-screen-padding;
     }
   }
   &.marginTop {
