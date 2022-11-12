@@ -11,6 +11,7 @@ const getHomePage = require('./get-home');
 const getPosts = require('./get-posts');
 const getPages = require('./get-pages');
 const getNavigation = require('./get-nav');
+const getCities = require('./get-cities');
 
 /**
  * @typedef Options
@@ -72,16 +73,15 @@ function initMetalsmithSourceSanity(options) {
     Object.assign(files, allPages);
     debug('Sanity pages: %O', allPages);
 
-    // get the site navigation from Sanity
-    const pendingNav = getNavigation(client, files);
-    const siteNav = await pendingNav;
-    // merge site navigation into metadata object
+    // get the cities from Sanity
+    const pendingCities = getCities(client, files);
+    const cities = await pendingCities;
+    // merge cities data into metadata object
     const metadata = metalsmith.metadata();
-    Object.assign(metadata, merge(metadata, siteNav));
+    Object.assign(metadata, merge(metadata, cities));
 
-    //console.log(JSON.stringify(siteNav, null, 4));
-
-    
+    //console.log(JSON.stringify(metalsmith.metadata(), null, 4));
+    console.log(metalsmith.metadata());
     done();
   }
 }
