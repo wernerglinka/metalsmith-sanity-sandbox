@@ -80,8 +80,6 @@ function initMetalsmithSourceSanity(options) {
     const metadata = metalsmith.metadata();
     Object.assign(metadata, merge(metadata, cities));
 
-    //console.log(JSON.stringify(metalsmith.metadata(), null, 4));
-    console.log(metalsmith.metadata());
     done();
   }
 }

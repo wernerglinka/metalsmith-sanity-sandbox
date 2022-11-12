@@ -7,7 +7,7 @@
     <img class="low-res" src="{{ lowResImagesrc }}" alt="{{ info.alt }}"/>
     <img class="high-res" src="" alt="{{ info.alt }}" data-source="{{ info.imageUrl }}"/>
     {% if info.caption %}<figcaption>{{ info.caption | mdToHTML | safe }}</figcaption>{% endif %}
-    {% if info.credits %}<div class="image-credit">{{ info.credits  | safe }}</div>{% endif %}
+    {% if info.credits %}<div class="image-credit">{{ info.credits | mdToHTML | safe }}</div>{% endif %}
   </figure>    
   
 {% endmacro %}
