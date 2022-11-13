@@ -1,16 +1,6 @@
-const BlocksToMarkdown = require('@sanity/block-content-to-markdown');
-const imageUrl = require('@sanity/image-url');
 const queries = require('./queries');
-const getSerializers = require('./get-serializers');
-
-// renderers
-const renderBlock = require('./block-renderers');
 
 async function getCities(client) {
-  // custom serializers for sanity blocks
-  // read more: https://www.sanity.io/docs/presenting-block-text
-  const serializers = getSerializers(client);
-
   const allCities = [];
   
   // fetch all pages from Sanity
@@ -23,14 +13,13 @@ async function getCities(client) {
   cities.map( city => {
     // build the city data object
     cityContent = {
+      id: city._id,
       name: city.name,
-      description: city.description,
       size: city.size,
       image: city.image,
       logo: city.logo,
       wappen: city.wappen,
       websitelink: city.websitelink,
-      wikiLink: city.wikiLink,
     };
 
     // merge cityContent into the allCities array

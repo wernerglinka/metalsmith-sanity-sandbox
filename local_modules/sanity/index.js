@@ -52,6 +52,9 @@ function initMetalsmithSourceSanity(options) {
     // initialize Sanity client
     const client = sanityClient(options);
 
+    /*
+     * Fetch all pages from Sanity
+     */
     // get home page from Sanity
     const pendingHomePage = getHomePage(client, files);
     const homePage = await pendingHomePage;
@@ -73,12 +76,24 @@ function initMetalsmithSourceSanity(options) {
     Object.assign(files, allPages);
     debug('Sanity pages: %O', allPages);
 
+    /*
+     * Fetch metadata from Sanity
+     */
+    const metadata = metalsmith.metadata();
+
     // get the cities from Sanity
     const pendingCities = getCities(client, files);
     const cities = await pendingCities;
     // merge cities data into metadata object
-    const metadata = metalsmith.metadata();
-    Object.assign(metadata, merge(metadata, cities));
+    metadata.data = metadata.data ? merge(metadata.data, cities) : cities;
+    debug('Sanity cities: %O', cities);
+
+    // get the football clubs from Sanity
+    const pendingClubs = getCities(client, files);
+    const clubs = await pendingClubs;
+    // merge football clubs data into metadata object
+    metadata.data = metadata.data ? merge(metadata.data, clubs) : clubs;
+    debug('Sanity football clubs: %O', clubs);
 
     done();
   }

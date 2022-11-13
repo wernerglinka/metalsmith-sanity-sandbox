@@ -1,0 +1,34 @@
+{% from "../partials/image.njk" import image %}
+{% from "../partials/text.njk" import text %}
+{% from "../partials/cta.njk import cta"%}
+
+{% macro logosList(info, data) %}
+  {# we need two copies so the auto scroll works properly #}
+  {% set copies = 2 %}
+  
+  {{% set logosList = data[info.listSource] | filterList(info.selections) %}
+  
+
+  {% set logoWidth = info.logoWidth %}
+  {% set logosListLength = logosList | length  *  logoWidth ~ "px" %}
+
+  <div class="marquee" style="--list-width: {{ logosListLength }}">
+    <div class="logos-wrapper">
+
+      {% for i in range(0, copies) -%}
+      <ul class="logos js-logos-list">
+      {% for item in logosList %}
+        {# assemble the logo url #}
+        {% set source = metadata.site.imagePrefix ~ "w_200,c_fill,g_auto,f_auto/" ~ item.logo %}
+        <li>
+          <a href="{{ item.web }}" title="{{ item.name }}">
+            <img src="{{ source }}" alt="{{ item.name }}" />
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+      {% endfor %}
+    </div> <!-- marquee-inner -->
+  </div> <!-- marquee -->
+
+{% endmacro %}
