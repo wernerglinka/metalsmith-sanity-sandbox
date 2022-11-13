@@ -59,7 +59,7 @@
               {% set params = block %}
 
               {# name determines which block is rendered #}
-              {{ renderBlock(name, params, metadata) }}
+              {{ renderBlock(name, params, data) }}
             {% endfor %}
           </div>
         {% endfor %}

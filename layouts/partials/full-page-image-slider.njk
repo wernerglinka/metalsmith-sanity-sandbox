@@ -2,7 +2,7 @@
 {% from "../partials/text.njk" import text %}
 {% from "../partials/scroll-to.njk" import scrollTo %}
 
-{% macro imageSlider(info, metadata) %}
+{% macro imageSlider(info, data) %}
 
   {% set images = info.images %}
   {% set imageCount = images | length %}
@@ -17,7 +17,7 @@
         class="slide js-slide {%  if loop.last %}initial{% endif %}"
       >
         {# site is in scope, was passed via the component macro #}
-        {{ image(slide.image, metadata) }}
+        {{ image(slide.image, data) }}
         <div class="slide-content">
           {{ text(slide.text) }}
           {{ scrollTo(slide.scrollTarget) }}

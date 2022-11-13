@@ -12,6 +12,7 @@ const getPosts = require('./get-posts');
 const getPages = require('./get-pages');
 const getNavigation = require('./get-nav');
 const getCities = require('./get-cities');
+const getFootballClubs = require('./get-football-clubs');
 
 /**
  * @typedef Options
@@ -89,12 +90,15 @@ function initMetalsmithSourceSanity(options) {
     debug('Sanity cities: %O', cities);
 
     // get the football clubs from Sanity
-    const pendingClubs = getCities(client, files);
+    const pendingClubs = getFootballClubs(client, files);
     const clubs = await pendingClubs;
     // merge football clubs data into metadata object
     metadata.data = metadata.data ? merge(metadata.data, clubs) : clubs;
     debug('Sanity football clubs: %O', clubs);
 
+
+    //console.log(JSON.stringify(cities, null, 4));
+    //console.log(clubs);
     done();
   }
 }

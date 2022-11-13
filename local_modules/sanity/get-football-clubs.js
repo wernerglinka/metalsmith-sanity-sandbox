@@ -1,5 +1,5 @@
+const imageUrl = require('@sanity/image-url');
 const queries = require('./queries');
-
 
 async function getFootballClubs(client) {
   const allClubs = [];
@@ -16,7 +16,10 @@ async function getFootballClubs(client) {
     clubContent = {
       id: club._id,
       name: club.name,
-      logo: club.logo,
+      logo: {
+        imageUrl: imageUrl(client).image(club.logo).url(),
+        alt: club.logo.alt
+      },
       websitelink: club.websitelink,
     };
 

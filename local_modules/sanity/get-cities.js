@@ -1,3 +1,4 @@
+const imageUrl = require('@sanity/image-url');
 const queries = require('./queries');
 
 async function getCities(client) {
@@ -16,9 +17,20 @@ async function getCities(client) {
       id: city._id,
       name: city.name,
       size: city.size,
-      image: city.image,
-      logo: city.logo,
-      wappen: city.wappen,
+      image: {
+        imageUrl: imageUrl(client).image(city.image).url(),
+        alt: city.image.alt,
+        caption: city.image.caption,
+        credits: city.image.credits
+      },
+      logo: {
+        imageUrl: imageUrl(client).image(city.logo).url(),
+        alt: city.logo.alt
+      },
+      wappen: {
+        imageUrl: imageUrl(client).image(city.wappen).url(),
+        alt: city.wappen.alt
+      },
       websitelink: city.websitelink,
     };
 

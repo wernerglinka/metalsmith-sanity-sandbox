@@ -8,7 +8,13 @@ module.exports = function renderLogosListBlock(block, client) {
 
   return {
     name: 'logos-list',
+    title: block.title,
+    subTitle: block.subTitle,
+    description: block.description,
+    listSource: block.listSource,
+    logoWidth: block.logoWidth,
+    scope: block.scope,
     selections: logosList,
-    listSource: block.listSource
+    cta: block.cta,
   }
 };
