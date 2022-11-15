@@ -7,7 +7,7 @@
     }
   }
   .block-text {
-    padding: $large-screen-padding;
+    padding: var(--large-screen-padding);
 
     .prefix {
       color: var(--color-highlight);

@@ -7,20 +7,15 @@
     {% else %}
       {% set classString = classString ~ " text-link" %}
     {% endif %}
-    {% if info.type %}
-      {% set classString = classString ~ " " ~ info.type %}
+    {% if info.linkType %}
+      {% set classString = classString ~ " " ~ info.linkType %}
     {% endif %}
-    {% if info.isVideoTrigger %}
-      {% set classString = classString ~ " js-modal-video" %}
+    {% if info.isExternal %}
+       <a href="{{ info.externalLink }}" class="{{ classString }}" target="_blank" rel="noopener noreferrer">
+    {% else %}
+      <a href="{{ info.internalLink }}" class="{{ classString }}">
     {% endif %}
-
-    <a 
-      href="{{ info.url }}" 
-      class="{{ classString }}" 
-      {% if info.isExternal %}target="_blank" rel="noopener noreferrer"{% endif %}
-      {% if info.isVideoTrigger %}data-video-id="{{ cta.videoId }}"{% endif %}
-    >
-      {{ info.label}}
+      {{ info.title}}
     </a>
   </div>
 {% endmacro %}

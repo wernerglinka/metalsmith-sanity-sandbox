@@ -5,16 +5,16 @@ module.exports = function renderLogosListBlock(block, client) {
   block[Object.keys(block).filter(k => k.startsWith('logos'))].map( (logo, i) => {
     logosList.push(logo._ref);
   });
-
+  
   return {
     name: 'logos-list',
-    title: block.title,
-    subTitle: block.subTitle,
-    description: block.description,
-    listSource: block.listSource,
-    logoWidth: block.logoWidth,
-    scope: block.scope,
-    selections: logosList,
-    cta: block.cta,
+    title: block.title ? block.title : '',
+    subTitle: block.subTitle ? block.subTitle : '',
+    description: block.description ? block.description : '',
+    listSource: block.listSource ? block.listSource : '',
+    logoWidth: block.logoWidth ? block.logoWidth : '',
+    scope:  block.scope ? block.scope : 'all',
+    selections: logosList ? logosList : [],
+    cta: block.cta ? block.cta : '',
   }
 };

@@ -11,6 +11,7 @@ import navigation from "./modules/navigation";
 import updatePageNameAttribute from "./modules/update-page-location";
 import loadSanityImage from "./modules/load-sanity-image";
 import slides from "./modules/slides";
+import logos from "./modules/logos";
 
 function initPage() {
   barba.init({
@@ -42,7 +43,8 @@ function initPage() {
   navigation.init();
   loadSanityImage.init();
   slides.init();
- 
+  logos.init();
+  
 }
 
 window.addEventListener("load", function() {

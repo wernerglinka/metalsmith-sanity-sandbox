@@ -7,10 +7,10 @@
 
     @media (max-width: ($max-content-width + (2 * $large-screen-padding))) {
       max-width: 100%;
-      padding: 0 $large-screen-padding;
+      padding: 0 var(--large-screen-padding);
     }
     @media (max-width: $small-screen) {
-      padding: 0 $small-screen-padding;
+      padding: 0 var(--small-screen-padding);
     }
   }
   &.marginTop {
@@ -26,7 +26,8 @@
     align-items: center;
 
     .column {
-      flex: 1 0 100%;
+      flex: 1 1 100%;
+      max-width: 100%;
       align-self: stretch;
     }
 

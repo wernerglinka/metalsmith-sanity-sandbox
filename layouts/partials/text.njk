@@ -23,8 +23,8 @@
   {% if info.body %}
     <div>{{ info.body | mdToHTML | safe }}</div>
   {% endif %}
-
-  {% if info.cta and info.cta.url %}
+  
+  {% if info.cta %}
     {{ cta(info.cta) }}
   {% endif %}
 

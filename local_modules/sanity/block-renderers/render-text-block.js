@@ -13,11 +13,6 @@ module.exports = function renderTextBlock(block, client) {
     headerType: block.headerType ? block.headerType : '',
     subTitle: block.subTitle ? block.subTitle : '',
     body: block.Body ? BlocksToMarkdown(block.Body, { serializers, ...client}) : '',
-    cta: {
-      label: block.cta.title ? block.cta.title : '',
-      url: block.cta.link ? block.cta.link : '',
-      kind: block.cta.kind ? block.cta.kind : '',
-      type: block.cta.linkType ? block.cta.linkType : '',
-    }
+    cta: block.cta ? block.cta : '',
   };
 };

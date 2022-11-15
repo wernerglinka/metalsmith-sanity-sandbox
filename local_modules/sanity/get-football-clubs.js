@@ -20,7 +20,11 @@ async function getFootballClubs(client) {
         imageUrl: imageUrl(client).image(club.logo).url(),
         alt: club.logo.alt
       },
-      websitelink: club.websitelink,
+      link: {
+        url: club.websiteLink.href,
+        title: club.websiteLink.linkLabel,
+        isExternal: club.isExternal
+      }
     };
 
     // merge cityContent into the allCities array

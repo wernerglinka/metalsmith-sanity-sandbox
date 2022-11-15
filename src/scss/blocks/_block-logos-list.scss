@@ -1,11 +1,10 @@
 .block-logos {
-  --logo-padding: 10px;
-  --list-height: 200px;
+  --logo-padding: 20px;
+  --list-height: 160px;
   --start-position: 0%;
   --end-position: -50%;
 
   position: relative;
-  height: var(--list-height);
 }
 .marquee {
   width: var(--list-width);
@@ -19,7 +18,7 @@
   display: flex;
   position: relative;
   transform: translate3d(var(--start-position), 0, 0);
-  animation: marquee 10s linear infinite;
+  animation: marquee 15s linear infinite;
   animation-play-state: paused;
 
   &.play {
@@ -38,6 +37,13 @@
 
   li {
     padding: 0 var(--logo-padding);
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: var(--list-height);
   }
 
   img {

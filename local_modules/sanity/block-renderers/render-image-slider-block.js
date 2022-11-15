@@ -13,9 +13,9 @@ module.exports = function renderImageSliderBlock(block, client) {
     const slideContent = {
       image: {
         imageUrl: imageUrl(client).image(slide.slideImage).url(),
-        alt: slide.slideImage.alt,
-        caption: slide.slideImage.caption,
-        credits: slide.slideImage.credits
+        alt: slide.slideImage.alt ? slide.slideImage.alt : '',
+        caption: slide.slideImage.caption ? slide.slideImage.caption : '',
+        credits: slide.slideImage.credits ? slide.slideImage.credits : '',
       },
       text: {
         titlePrefix: slide.slideText.titlePrefix || '',

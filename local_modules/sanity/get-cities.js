@@ -31,7 +31,11 @@ async function getCities(client) {
         imageUrl: imageUrl(client).image(city.wappen).url(),
         alt: city.wappen.alt
       },
-      websitelink: city.websitelink,
+      link: {
+        url: city.websiteLink.href,
+        title: city.websiteLink.linkLabel,
+        isExternal: city.isExternal
+      }
     };
 
     // merge cityContent into the allCities array
